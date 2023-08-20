@@ -3,6 +3,7 @@ import speech_recognition as sr
 import webbrowser
 import datetime
 import pyjokes
+import time 
 
 
 def sptext():
@@ -33,7 +34,8 @@ def speechtx(x):
 
 if __name__ == '__main__':
     
-    # if  sptext().lower()=="hey peter":
+ if  "hey peter" in sptext().lower():
+    while True:
         data1=sptext().lower()
         if "your name" in data1:
             name="my name is peter"
@@ -44,9 +46,18 @@ if __name__ == '__main__':
         elif "time" in data1:
             time=datetime.datetime.now().strftime("%I%M%p")
             speechtx(time)
+        elif "youtube" in data1:
+            webbrowser.open("https://www.youtube.com/")
+        elif "joke" in data1:
+            joke_1=pyjokes.get_joke(language='en',category='neutral')
+            speechtx(joke_1)
+        elif "exit" in data1:
+            speechtx("thank you")
+            break
+        time.sleep(5)
             
-    # else:
-    #     print("thanks")
+ else:
+        print("thanks")
         
     
     
